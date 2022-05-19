@@ -1,13 +1,13 @@
-import {ProductRow}  from './ProductRow'
-import './App.css';
 
+import SearchBar from './SearchBar';
+import ProductTable from './ProductTable';
+import '../styles/App.css';
 function App() {
   return (
-    <>
-      <ProductRow/>
-  <ProductRow/>
-  <ProductRow/>
-    </>
+    <section className='filterable-product-table'>
+      <SearchBar/>
+      <ProductTable/>
+    </section>
 
   );
 }

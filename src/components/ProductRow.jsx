@@ -1,8 +1,14 @@
 import React from 'react'
-
-function ProductRow() {
+import '../styles/ProductRow.css'
+function ProductRow(props) {
+  const producto=props.name
+  const Precio=props.price
+  const theme='product-row '+props.theme
+  
   return (
-    <div>ProductRow</div>
+    <div className='product-row'>
+      <span> {producto }</span><span>{ ` $${Precio} ` }</span>
+    </div>
   )
 }
 
