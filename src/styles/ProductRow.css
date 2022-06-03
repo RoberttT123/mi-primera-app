@@ -1,19 +1,25 @@
-.product-row{
-   border: 1px solid black;
+.product-row {
    border-radius: 5px;
    display: flex;
-   justify-content: space-evenly;
+   justify-content: space-between;
+   align-items: center;
    width: 90%;
    margin: 0 auto;
    margin-bottom: 8px;
+   border: 1px solid black;
 }
-.blanck{
-   border:1px  solid 
 
+.product-row img {
+   height: 36px;
+   width: 36px;
+   border-radius: 50%;
 }
-.red{
-
+.black {
+   border: 1px solid black;
 }
-.blue{
-
+.red {
+   border: 1px solid red;
+}
+.blue {
+   border: 1px solid blue;
 }

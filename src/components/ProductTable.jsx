@@ -1,22 +1,46 @@
-import React from 'react'
-import CategoryProductRow from './CategoryProductRow'
-import { sportsList,electronicsList } from '../assets/filteredByCategories'
+import React, { useState, useEffect } from 'react'
+import { CategoryProductRow } from './CategoryProductRow'
+import { CategoryProductRow2 } from './CategoryProductRow2'
+
+import { sportsList, electronicsList } from '../assets/filteredByCategories'
 import '../styles/ProductTable.css'
-conts.log (sportsList)
-console.log(electronicsList)
+
 
 function ProductTable() {
-  return (
-    <div className='product-table'>
-        <div className='product-table_header'>
-            <span>Name</span><span>Price</span>
+    const [dataCharacters, setDataCharacters] = useState([])
+    const fetchCharacters = async () => {
+        const response = await fetch('https://rickandmortyapi.com/api/character')
+        response.json().then(response => setDataCharacters(response.results))
+
+    }
+    useEffect(() => {
+        fetchCharacters()
+    }, [])
+    const [dataEpisode, setDataEpisode] = useState([])
+    const fetchEpisode = async () => {
+        const response = await fetch('https://rickandmortyapi.com/api/episode')
+        response.json().then(response => setDataEpisode(response.results))
+
+    }
+    useEffect(() => {
+        fetchEpisode()
+    }, [])
+    
+
+    // console.log(dataCharacters)
+
+    return (
+        <div className='product-table'>
+            <div className='product-table__header'>
+                <span>'Rick & Morty'</span>
+
+            </div>
+            <div className='product-table__categories'>
+                <CategoryProductRow title='Characters' list={dataCharacters} />
+                <CategoryProductRow2 title='Episodes' list={dataEpisode} />
+            </div>
         </div>
-        <div className='product-table_categories'>
-        <CategoryProductRow title='Sportings Goods' list={sportsList}/>
-        <CategoryProductRow title='Electronics' list={electronicsList}/>
-        </div>
-    </div>
-  )
+    )
 }
 
-export default ProductTable
+export { ProductTable }
